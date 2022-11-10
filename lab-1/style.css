@@ -1,0 +1,32 @@
+body{
+    background: rgb(170, 232, 255);
+}
+
+.image {
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+    gap: 50px;
+}
+
+img {
+    width: 30%;
+}
+
+fieldset{
+    color: rgb(255, 0, 0);
+    font-weight: 800;
+    background-color: rgb(46, 189, 255);
+}
+
+.set {
+    display: flex;
+}
+
+table{
+    background: rgb(201, 252, 255);
+}
+
+th{
+    padding: 10px 20px;
+}
