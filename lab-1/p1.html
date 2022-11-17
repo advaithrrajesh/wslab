@@ -6,30 +6,144 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Static Website</title>
     <link rel="stylesheet" href="style.css">
+    
+<script src=
+"https://maps.google.com/maps/api/js?sensor=false">
+</script>
+<script type="text/javascript">
+
+    function getlocation() {
+    if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showLoc, errHand);
+    navigator.geolocation.getCurrentPosition(showPosition, showError)
+    }
+    }
+
+    var x= document.getElementById("location");
+     
+     function showPosition(position){
+       var x = "Your current location is (" + "Latitude: " + position.coords.latitude + ", " + "Longitude: " +    position.coords.longitude + ")";
+                document.getElementById("location").innerHTML = x;
+     }
+     function showError(error) {
+        switch(error.code){
+            case error.PERMISSION_DENIED:
+            alert("User denied the request for Geolocation API.");
+            break;
+        case error.POSITION_UNAVAILABLE:
+            alert("USer location information is unavailable.");
+            break;
+        case error.TIMEOUT:
+            alert("The request to get user location timed out.");
+            break;
+        case error.UNKNOWN_ERROR:
+            alert("An unknown error occurred.");
+            break;
+    }
+    }
+
+    function showLoc(pos) {
+    var x = document.getElementById("demo2");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+    latt = pos.coords.latitude;
+    long = pos.coords.longitude;
+    var lattlong = new google.maps.LatLng(latt, long);
+    var OPTions = {
+    center: lattlong,
+    zoom: 10,
+    mapTypeControl: true,
+    navigationControlOptions: {
+    style: google.maps.NavigationControlStyle.SMALL,
+    },
+    };
+    var mapg = new google.maps.Map(
+    document.getElementById("demo2"),
+    OPTions
+    );
+    var markerg = new google.maps.Marker({
+    position: lattlong,
+    map: mapg,
+    title: "You are here!",
+    });
+    }
+    function errHand(err) {
+    switch (err.code) {
+    case err.PERMISSION_DENIED:
+    result.innerHTML =
+    "The application doesn't have the permission" +
+    "to make use of location services";
+    break;
+    case err.POSITION_UNAVAILABLE:
+    result.innerHTML = "The location of the device is uncertain";
+    break;
+    case err.TIMEOUT:
+    result.innerHTML = "The request to get user location timed out";
+    break;
+    case err.UNKNOWN_ERROR:
+    result.innerHTML =
+    "Time to fetch location information exceeded" +
+    "the maximum timeout interval";
+    break;
+    }
+    }
+
+    
+function draw() {
+  var canvas = document.getElementById('canvas');
+  if (canvas.getContext) {
+    var ctx = canvas.getContext('2d');
+
+    ctx.fillRect(30, 30, 100, 100);
+    ctx.clearRect(45, 45, 60, 60);
+    ctx.strokeRect(50, 50, 50, 50);
+
+  }
+}
+
+
+
+</script>
+
 </head>
 <body>
     <h1>Welcome User!!</h1>
-        <div class="set">
-    <div class="image-1">
-        <ol>
-    <li><img src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/gqzm7hhavzep4ili79pc"></li>
-    <li><img src="https://i.pinimg.com/originals/db/4f/33/db4f33d659152c199934cb53de0f3089.jpg"></li>
-    <li><img src="https://www.sailusfood.com/wp-content/uploads/2012/12/puttu-kadala-kerala-vegetarian-recipes.jpg"></li>
-        </ol>
+    <div class="set">
+        <div class="image-1">
+            <ol>
+        <li><img src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/gqzm7hhavzep4ili79pc"></li>
+        <li><img src="https://i.pinimg.com/originals/db/4f/33/db4f33d659152c199934cb53de0f3089.jpg"></li>
+        <li><img src="https://www.sailusfood.com/wp-content/uploads/2012/12/puttu-kadala-kerala-vegetarian-recipes.jpg"></li>
+            </ol>
+        </div>
+        <div class="image-2">
+            <ul>
+                <li><img src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/gqzm7hhavzep4ili79pc" alt="food"></li>
+                <map name="food">
+                    <area shape="rect" coords="34,44,270,350" alt="food" href="next2.html">
+                </map>
+                <li><img src="https://i.pinimg.com/originals/db/4f/33/db4f33d659152c199934cb53de0f3089.jpg"></li>
+                <li><img src="https://www.sailusfood.com/wp-content/uploads/2012/12/puttu-kadala-kerala-vegetarian-recipes.jpg"></li>
+                
+            </ul>
+        </div>
     </div>
-    <div class="image-2">
-        <ul>
-            <li><img src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/gqzm7hhavzep4ili79pc"></li>
-            <li><img src="https://i.pinimg.com/originals/db/4f/33/db4f33d659152c199934cb53de0f3089.jpg"></li>
-            <li><img src="https://www.sailusfood.com/wp-content/uploads/2012/12/puttu-kadala-kerala-vegetarian-recipes.jpg"></li>
-        </ul>
-    </div>
-</div>
 <a href="next.html" style="font-size: 20px;">History of Our College Canteen</a><br>
-<a href="next2.html" style="font-size: 20px;">Our Specialities</a><br>
+<a href="next2.html" style="font-size: 20px;">Order Online</a><br>
 <a href="next3.html" style="font-size: 20px;">About</a>
 
 <br>
+<audio controls>
+    <source src="/sample-12s.mp3" type="audio/ogg">
+    <source src="/build/audios/audio.mp3" type="audio/mpeg">
+  </audio>
+<video width="500" controls>
+    <source src="/production ID_4913136.mp4" type="video/ogg">
+
+  </video>
 <h3>Menu</h3>
 <table border="2px">
     <tr>
@@ -48,6 +162,17 @@
       <td>Rs. 140</td>
     </tr>
   </table><br>
+
   
+<div class="paras" align="center">
+  <h2>LOCATION</h2>
+  
+  <button type="button" onclick="getlocation();">
+   Get Current Position
+  </button><br><br>
+  <div id="location"></div><br>
+  <div id="demo2" style="width: 50vw; height: 50vw; display: none;"" ></div>
+  </div>
+  <canvas id="canvas02" width="400" style="border: 1px solid #eee; background-color: black;"></canvas>
 </body>
 </html>
